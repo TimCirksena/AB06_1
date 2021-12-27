@@ -21,12 +21,9 @@ public class MainActivity extends AppCompatActivity implements onCellClick{
         setContentView(R.layout.activity_main);
 
         smiley = findViewById(R.id.activity_main_smiley);
-        smiley.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                game = new MinesweeperModel(10,10);
-                mineGridRecyclerAdapter.setCells(game.getMineGrid().getCells());
-            }
+        smiley.setOnClickListener(v -> {
+            game = new MinesweeperModel(10,10);
+            mineGridRecyclerAdapter.setCells(game.getMineGrid().getCells());
         });
 
         gridRecyclerView = findViewById(R.id.activity_main_grid);
@@ -39,6 +36,12 @@ public class MainActivity extends AppCompatActivity implements onCellClick{
 
     @Override
     public void onCellClick(Cell cell) {
-        Toast.makeText(getApplicationContext(), "Cell clicked", Toast.LENGTH_SHORT).show();
+        game.handleCellClick(cell);
+
+        if(game.isGameOver()){
+            Toast.makeText(getApplicationContext(), "Game is Over", Toast.LENGTH_SHORT).show();
+            game.getMineGrid().revealAllBombs();
+        }
+        mineGridRecyclerAdapter.setCells(game.getMineGrid().getCells());
     }
 }
