@@ -54,6 +54,7 @@ public class MineGrid {
         }
     }
 
+
     public void revealAllBombs() {
         for (Cell c: cells) {
             if (c.getValue() == Cell.bomb) {

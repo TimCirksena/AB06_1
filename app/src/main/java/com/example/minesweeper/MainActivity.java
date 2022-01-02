@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements onCellClick{
         game.handleCellClick(cell);
 
         if(game.isGameOver()){
-            Toast.makeText(getApplicationContext(), "Game is Over", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Das Spiel ist vorbei!", Toast.LENGTH_SHORT).show();
             game.getMineGrid().revealAllBombs();
         }
         mineGridRecyclerAdapter.setCells(game.getMineGrid().getCells());

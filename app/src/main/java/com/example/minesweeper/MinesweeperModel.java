@@ -10,10 +10,12 @@ public class MinesweeperModel {
     private MineGrid mineGrid;
     private boolean clearMode;
     private boolean isGameOver;
+    private boolean isTimeOver;
 
     public MinesweeperModel(int size, int numberOfBombs){
         this.clearMode = true;
         this.isGameOver = false;
+        this.isTimeOver = false;
         mineGrid = new MineGrid(size);
         mineGrid.generateGrid(numberOfBombs);
     }
